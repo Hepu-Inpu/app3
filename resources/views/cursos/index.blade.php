@@ -15,9 +15,9 @@
                                 class="card-img-top mx-auto d-block" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $velas->hostia }} </h5>
-                                <p class="card-text">{{ $velas->descripcion }} </p>
-
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                               
+                                {{--se necesita el id para ver el registro en particular--}}
+                                <a href="/curso/{{$velas->id}}" class="btn btn-primary">Go somewhere</a>
                             </div>
                         </div>
                     </div>

@@ -54,7 +54,7 @@ class CursoController extends Controller
         $cursitosXD->save();
         return 'ostia tio podiste vete a casa hijodeputa';
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -64,11 +64,17 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        //
+        //creo un aray con informacion del registro
+        //del id que viaja en la solicitud
+
+        $cursito = curso::find($id);
+        // asocio el array al view usando compat
+        return view('cursos.show',compact('cursito'));
+        //return view('cursos.show');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * muestra el recurso especificado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
