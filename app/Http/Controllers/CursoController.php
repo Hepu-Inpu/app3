@@ -19,7 +19,7 @@ class CursoController extends Controller
         //a su vez array actuara como un objeto
         $cursito = curso::all();
 
-        return view('cursos.index',compact('cursito'));
+        return view('cursos.index', compact('cursito'));
     }
 
     /**
@@ -48,7 +48,7 @@ class CursoController extends Controller
         //esto me permitira manipular la tabla
         $cursitosXD->hostia = $request->input('mamaste');
         $cursitosXD->descripcion = $request->input('mamastepordos');
-        if($request->hasfile('img')){
+        if ($request->hasfile('img')) {
             $cursitosXD->imagen = $request->file('img')->store('public');
         }
         $cursitosXD->save();
@@ -69,7 +69,7 @@ class CursoController extends Controller
 
         $cursito = curso::find($id);
         // asocio el array al view usando compat
-        return view('cursos.show',compact('cursito'));
+        return view('cursos.show', compact('cursito'));
         //return view('cursos.show');
     }
 
@@ -81,7 +81,10 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cursito = curso::find($id);
+        return view('cursos.edit', compact('cursito'));
+
+        //return $cursito;
     }
 
     /**
@@ -93,6 +96,18 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        //con fill lleno todos los campos de la tabla cursos
+        //con la info que viene desde el request
+        //excepto el input imagen
+        $cursito = curso::find($id);
+        $cursito->fill($request->except('img'));
+        if ($request->hasfile('img')){
+            $cursito-> imagen = $request->file('img')->store('public');
+        }
+        $cursito->save();
+        return 'dio';
+
         //con el metodo all() veo todo la informacion
 
     }
