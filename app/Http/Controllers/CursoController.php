@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeCursoRequest;
 use App\Models\curso;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
@@ -38,22 +39,23 @@ class CursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeCursoRequest $request)
     {
         //return $request->all();
-        //obtuvimos lo que el usuario envia por el input cuyo  name es mamaste
-        //return $request->input('mamastepordos');
-        //return $request->input('mamaste');
+        //obtuvimos lo que el usuario envia por el input cuyo  name es nombre
+        //return $request->input('desc');
+        //return $request->input('nombre');
         $cursitosXD = new curso();
         //esto me permitira manipular la tabla
-        $cursitosXD->hostia = $request->input('mamaste');
-        $cursitosXD->descripcion = $request->input('mamastepordos');
+        $cursitosXD->hostia = $request->input('nombre');
+        $cursitosXD->descripcion = $request->input('desc');
         if ($request->hasfile('img')) {
             $cursitosXD->imagen = $request->file('img')->store('public');
         }
         $cursitosXD->save();
         return 'ostia tio podiste vete a casa hijodeputa';
     }
+
 
 
     /**

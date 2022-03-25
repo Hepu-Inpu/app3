@@ -8,6 +8,7 @@ use App\Http\Controllers\heladosController;
 
 use App\Http\Controllers\ControladorPrecios;
 use App\Http\Controllers\CursoController;
+
 use Illuminate\Routing\RouteRegistrar;
 
 /*
@@ -60,3 +61,4 @@ Route::get('precio/{precio}', [ControladorPrecios::class, 'precios']);
 
 Route::get('iva/{artic}/{pr}', [ControladorPrecios::class, 'getIVA']);
 Route::resource('curso',CursoController::class );
+
