@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DocenteController;
 use Illuminate\Support\Facades\Route;
 //invocar el controlador desde su ruta
 use App\Http\Controllers\miprimerController;
@@ -61,4 +61,5 @@ Route::get('precio/{precio}', [ControladorPrecios::class, 'precios']);
 
 Route::get('iva/{artic}/{pr}', [ControladorPrecios::class, 'getIVA']);
 Route::resource('curso',CursoController::class );
+Route::resource('docente',DocenteController::class );
 
